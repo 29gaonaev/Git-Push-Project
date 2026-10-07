@@ -222,6 +222,80 @@
     .boss-button:hover { background: #812e24; }
     .boss-button:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 
+    .arena-panel[hidden] { display: none; }
+    .arena-panel {
+      grid-column: 1 / -1;
+      padding: 22px;
+      border: 1px solid #b6c7bd;
+      border-radius: 8px;
+      background: #edf4e9;
+      box-shadow: 0 4px 0 #d2dfd2;
+    }
+    .arena-heading { display: flex; align-items: end; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+    .arena-kicker { margin: 0 0 5px; color: var(--green); font-size: 10px; font-weight: 900; letter-spacing: 1.2px; text-transform: uppercase; }
+    .arena-title { margin: 0; font-size: 22px; font-weight: 900; }
+    .arena-status { margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
+    .arena-health-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 8px; }
+    .arena-health-label { display: flex; justify-content: space-between; margin-bottom: 4px; color: var(--ink); font-size: 10px; font-weight: 900; }
+    .arena-health { height: 11px; overflow: hidden; border: 1px solid #425951; border-radius: 3px; background: #d9ded4; }
+    .arena-health-fill { width: 100%; height: 100%; background: #54a56e; transition: width 120ms linear; }
+    .arena-health-fill.opponent { background: #e77b5d; }
+    .ultimate-meter { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 9px; margin: 10px 0; color: #73542b; font-size: 10px; font-weight: 900; }
+    .ultimate-track { height: 10px; overflow: hidden; border: 1px solid #956e28; border-radius: 3px; background: #f1e4bd; }
+    .ultimate-fill { width: 0; height: 100%; background: #efb93d; transition: width 150ms ease; }
+    .ultimate-meter.is-ready .ultimate-fill { background: #e78b35; }
+    .arena-stage {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      border: 2px solid #253b3d;
+      border-radius: 5px;
+      background: linear-gradient(#a9d8cf 0 66%, #f3d58c 66% 69%, #739c65 69%);
+      box-shadow: inset 0 -25px 0 #648750;
+      touch-action: manipulation;
+    }
+    .arena-stage::before { position: absolute; top: 18px; right: 12%; width: 48px; aspect-ratio: 1; border-radius: 50%; background: #f7db76; box-shadow: 0 0 0 9px #f7db7633; content: ""; }
+    .arena-stage::after { position: absolute; right: 0; bottom: 28px; left: 0; height: 3px; background: #455e49; content: ""; }
+    .arena-crater { position: absolute; bottom: 6px; width: 86px; height: 22px; border: 3px solid #526f4b; border-radius: 50%; background: #607d53; }
+    .arena-crater.one { left: 18%; }
+    .arena-crater.two { right: 12%; width: 55px; height: 14px; }
+    .fighter { position: absolute; z-index: 1; bottom: 28px; width: 54px; height: 104px; transform: translateX(-50%); }
+    .fighter.player { left: 20%; --fighter-color: #287a60; --fighter-shadow: #1d5e49; }
+    .fighter.opponent { left: 78%; --fighter-color: #c45843; --fighter-shadow: #87372e; }
+    .fighter-face { position: absolute; top: 3px; left: 14px; width: 28px; height: 26px; border: 2px solid #26363a; border-radius: 7px 7px 9px 9px; background: #f2c995; }
+    .fighter-face::before { position: absolute; top: 8px; left: 6px; color: #26363a; font-size: 12px; content: "• •"; letter-spacing: 2px; }
+    .fighter-body { position: absolute; top: 29px; left: 8px; width: 38px; height: 38px; border: 2px solid #26363a; border-radius: 8px 8px 4px 4px; background: var(--fighter-color); box-shadow: inset 0 -7px 0 var(--fighter-shadow); }
+    .fighter-body::before, .fighter-body::after { position: absolute; top: 7px; width: 12px; height: 33px; border: 2px solid #26363a; border-radius: 7px; background: var(--fighter-color); content: ""; }
+    .fighter-body::before { left: -13px; transform: rotate(18deg); }
+    .fighter-body::after { right: -13px; transform: rotate(-18deg); }
+    .fighter-leg { position: absolute; top: 62px; left: 13px; width: 12px; height: 32px; border: 2px solid #26363a; border-radius: 4px; background: #3b5151; }
+    .fighter-leg::after { position: absolute; top: 0; left: 11px; width: 12px; height: 32px; border: 2px solid #26363a; border-radius: 4px; background: #3b5151; content: ""; }
+    .fighter.opponent { transform: translateX(-50%) scaleX(-1); }
+    .fighter.facing-left { transform: translateX(-50%) scaleX(-1); }
+    .fighter.opponent.facing-left { transform: translateX(-50%); }
+    .fighter.is-jumping { bottom: 70px; }
+    .fighter.is-attacking .fighter-body::after { right: -24px; width: 25px; height: 12px; top: 4px; border-radius: 8px; background: #f2c995; transform: rotate(-8deg); }
+    .fighter.is-hurt { filter: brightness(1.8); }
+    .arena-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
+    .arena-control-group { display: flex; gap: 7px; }
+    .arena-control { min-width: 48px; min-height: 40px; padding: 0 11px; border: 1px solid #9cac9e; border-radius: 5px; background: #fffdf7; color: var(--ink); cursor: pointer; font-size: 12px; font-weight: 900; touch-action: none; user-select: none; }
+    .arena-control:hover { background: #e0ecd9; }
+    .arena-control:active { transform: translateY(2px); }
+    .arena-control:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+    .arena-control.primary { border-color: var(--green-dark); background: var(--green); color: white; }
+    .arena-control.primary:hover { background: var(--green-dark); }
+    .arena-control.ultimate { border-color: #956e28; background: #f4c84f; color: #392b12; }
+    .arena-control.ultimate:hover:not(:disabled) { background: #edb72e; }
+    .arena-control.ultimate:disabled { border-color: #c7b98f; background: #e8e1cf; color: #827b68; }
+    .arena-control[disabled] { opacity: .5; cursor: not-allowed; }
+    .fighter.is-ultimate .fighter-body { animation: ultimate-strike 420ms cubic-bezier(.2, .8, .25, 1); }
+    .fighter.is-ultimate .fighter-body::before, .fighter.is-ultimate .fighter-body::after { background: #f4c84f; }
+    @keyframes ultimate-strike {
+      0%, 100% { transform: translateX(0) scale(1); box-shadow: inset 0 -7px 0 var(--fighter-shadow), 0 0 0 0 #f4c84f00; }
+      38% { transform: translateX(5px) scale(1.14); box-shadow: inset 0 -7px 0 var(--fighter-shadow), 0 0 0 7px #f4c84f99, 0 0 24px 12px #f4c84f; }
+      62% { transform: translateX(13px) scale(1.2); box-shadow: inset 0 -7px 0 var(--fighter-shadow), 0 0 0 9px #f4c84fcc, 0 0 30px 16px #f4c84f; }
+    }
+
     @media (max-width: 700px) {
       .shell { width: min(100% - 24px, 500px); padding-top: 18px; }
       .topbar { margin-bottom: 15px; }
@@ -239,6 +313,13 @@
       .boss-panel { grid-template-columns: 1fr; gap: 14px; padding: 16px; }
       .boss-visual { min-height: 120px; }
       .boss-icon { font-size: 62px; }
+      .arena-panel { padding: 16px; }
+      .arena-heading { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .arena-status { text-align: left; }
+      .arena-stage { height: 190px; }
+      .arena-controls { align-items: stretch; flex-wrap: wrap; }
+      .arena-control-group { flex: 1; }
+      .arena-control { flex: 1; }
     }
 
     @media (max-width: 380px) {
@@ -277,7 +358,7 @@
         <button class="planet-button" id="planet-button" type="button" aria-label="Tap the planet to collect stardust">
           <span class="planet" aria-hidden="true"><span class="planet-ring"></span><span class="planet-face"></span><span class="planet-mouth"></span></span>
         </button>
-        <div class="tap-hint">Tap your planet to gather stardust</div>
+        <div class="tap-hint">Tap your planet or hold Space to gather stardust</div>
       </section>
 
       <section class="shop-panel" aria-labelledby="shop-title">
@@ -308,6 +389,40 @@
           <button class="boss-button" id="boss-button" type="button"></button>
         </div>
         <div class="boss-visual" aria-hidden="true"><span class="boss-icon" id="boss-icon"></span></div>
+      </section>
+
+      <section class="arena-panel" aria-labelledby="arena-title">
+        <div class="arena-heading">
+          <div><p class="arena-kicker">A tiny test of courage</p><h2 class="arena-title" id="arena-title">Pocket Arena</h2></div>
+          <p class="arena-status" id="arena-status" aria-live="polite">A challenger is waiting. Start when you're ready.</p>
+        </div>
+        <div class="arena-health-row" aria-label="Fighter vitality">
+          <div><div class="arena-health-label"><span>You</span><span id="player-health-text">100 / 100</span></div><div class="arena-health" role="progressbar" aria-label="Your vitality" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="arena-health-fill" id="player-health-fill"></div></div></div>
+          <div><div class="arena-health-label"><span>Moon Bruiser</span><span id="opponent-health-text">100 / 100</span></div><div class="arena-health" role="progressbar" aria-label="Moon Bruiser vitality" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="arena-health-fill opponent" id="opponent-health-fill"></div></div></div>
+        </div>
+        <div class="ultimate-meter" id="ultimate-meter">
+          <span>COSMIC BREAK</span>
+          <div class="ultimate-track" id="ultimate-track" role="progressbar" aria-label="Ultimate charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="ultimate-fill" id="ultimate-fill"></div></div>
+          <span id="ultimate-charge-text">0%</span>
+        </div>
+        <div class="arena-stage" role="img" aria-label="A green space fighter faces a red moon bruiser on a small planet">
+          <span class="arena-crater one" aria-hidden="true"></span><span class="arena-crater two" aria-hidden="true"></span>
+          <div class="fighter player" id="player-fighter" aria-hidden="true"><span class="fighter-face"></span><span class="fighter-body"></span><span class="fighter-leg"></span></div>
+          <div class="fighter opponent" id="opponent-fighter" aria-hidden="true"><span class="fighter-face"></span><span class="fighter-body"></span><span class="fighter-leg"></span></div>
+        </div>
+        <div class="arena-controls">
+          <div class="arena-control-group" aria-label="Movement">
+            <button class="arena-control" type="button" data-arena-move="left" aria-label="Move left">◀</button>
+            <button class="arena-control" type="button" data-arena-move="right" aria-label="Move right">▶</button>
+            <button class="arena-control" type="button" data-arena-action="jump">Jump</button>
+          </div>
+          <div class="arena-control-group" aria-label="Attacks">
+            <button class="arena-control primary" type="button" data-arena-action="punch">Punch</button>
+            <button class="arena-control primary" type="button" data-arena-action="kick">Kick</button>
+            <button class="arena-control ultimate" type="button" data-arena-action="ultimate" title="Ultimate attack (L)" disabled>Ultimate</button>
+            <button class="arena-control" id="arena-start" type="button">Start match</button>
+          </div>
+        </div>
       </section>
     </main>
   </div>
@@ -350,6 +465,171 @@
     const bossHealthTextElement = document.getElementById("boss-health-text");
     const bossStatusElement = document.getElementById("boss-status");
     const bossButtonElement = document.getElementById("boss-button");
+    const arenaStatusElement = document.getElementById("arena-status");
+    const playerFighterElement = document.getElementById("player-fighter");
+    const opponentFighterElement = document.getElementById("opponent-fighter");
+    const playerHealthFillElement = document.getElementById("player-health-fill");
+    const opponentHealthFillElement = document.getElementById("opponent-health-fill");
+    const ultimateMeterElement = document.getElementById("ultimate-meter");
+    const ultimateFillElement = document.getElementById("ultimate-fill");
+    const ultimateTrackElement = document.getElementById("ultimate-track");
+    const ultimateChargeTextElement = document.getElementById("ultimate-charge-text");
+    const arenaState = { active: false, playerX: 20, opponentX: 78, playerHealth: 100, opponentHealth: 100, ultimateCharge: 0, left: false, right: false, jumpUntil: 0, playerAttackAt: 0, opponentAttackAt: 0 };
+    let spaceCollectTimer = null;
+    let spaceHeld = false;
+
+    function renderArena() {
+      playerFighterElement.style.left = `${arenaState.playerX}%`;
+      opponentFighterElement.style.left = `${arenaState.opponentX}%`;
+      playerFighterElement.classList.toggle("facing-left", arenaState.playerX > arenaState.opponentX);
+      opponentFighterElement.classList.toggle("facing-left", arenaState.playerX < arenaState.opponentX);
+      playerFighterElement.classList.toggle("is-jumping", Date.now() < arenaState.jumpUntil);
+      playerHealthFillElement.style.width = `${arenaState.playerHealth}%`;
+      opponentHealthFillElement.style.width = `${arenaState.opponentHealth}%`;
+      ultimateFillElement.style.width = `${arenaState.ultimateCharge}%`;
+      ultimateChargeTextElement.textContent = `${arenaState.ultimateCharge}%`;
+      ultimateTrackElement.setAttribute("aria-valuenow", String(arenaState.ultimateCharge));
+      ultimateMeterElement.classList.toggle("is-ready", arenaState.ultimateCharge === 100);
+      document.getElementById("player-health-text").textContent = `${arenaState.playerHealth} / 100`;
+      document.getElementById("opponent-health-text").textContent = `${arenaState.opponentHealth} / 100`;
+      document.querySelector('[aria-label="Your vitality"]').setAttribute("aria-valuenow", String(arenaState.playerHealth));
+      document.querySelector('[aria-label="Moon Bruiser vitality"]').setAttribute("aria-valuenow", String(arenaState.opponentHealth));
+      document.querySelectorAll("[data-arena-action], [data-arena-move]").forEach((button) => {
+        button.disabled = !arenaState.active || (button.dataset.arenaAction === "ultimate" && arenaState.ultimateCharge < 100);
+      });
+      document.getElementById("arena-start").textContent = arenaState.active ? "Restart match" : "Start match";
+    }
+
+    function startArena() {
+      arenaState.active = true;
+      arenaState.playerX = 20;
+      arenaState.opponentX = 78;
+      arenaState.playerHealth = 100;
+      arenaState.opponentHealth = 100;
+      arenaState.ultimateCharge = 0;
+      arenaState.left = false;
+      arenaState.right = false;
+      arenaState.jumpUntil = 0;
+      arenaState.playerAttackAt = 0;
+      arenaState.opponentAttackAt = 0;
+      arenaStatusElement.textContent = "Move with A/D or arrows. Jump with Space, punch with J, kick with K.";
+      renderArena();
+    }
+
+    function endArena(won) {
+      arenaState.active = false;
+      arenaState.left = false;
+      arenaState.right = false;
+      if (won) {
+        arenaStatusElement.textContent = "Moon Bruiser down! You earned 25 stardust.";
+        collect(25);
+      } else {
+        arenaStatusElement.textContent = "You were knocked out. Start a new match and try again.";
+      }
+      renderArena();
+    }
+
+    function arenaAttack(type) {
+      if (!arenaState.active) return;
+      if (type === "ultimate" && arenaState.ultimateCharge < 100) return;
+      const now = Date.now();
+      const cooldown = type === "ultimate" ? 900 : type === "kick" ? 620 : 360;
+      if (now < arenaState.playerAttackAt) return;
+      arenaState.playerAttackAt = now + cooldown;
+      playerFighterElement.classList.add("is-attacking");
+      setTimeout(() => playerFighterElement.classList.remove("is-attacking"), 180);
+      if (type === "ultimate") {
+        arenaState.ultimateCharge = 0;
+        playerFighterElement.classList.add("is-ultimate");
+        setTimeout(() => playerFighterElement.classList.remove("is-ultimate"), 420);
+      }
+      if (Math.abs(arenaState.playerX - arenaState.opponentX) <= 20) {
+        const damage = type === "ultimate" ? 55 : type === "kick" ? 22 : 13;
+        arenaState.opponentHealth = Math.max(0, arenaState.opponentHealth - damage);
+        if (type !== "ultimate") arenaState.ultimateCharge = Math.min(100, arenaState.ultimateCharge + (type === "kick" ? 28 : 18));
+        opponentFighterElement.classList.add("is-hurt");
+        setTimeout(() => opponentFighterElement.classList.remove("is-hurt"), 180);
+        arenaStatusElement.textContent = type === "ultimate" ? "Cosmic Break! Ultimate hit for 55 damage!" : `${type === "kick" ? "Kick" : "Punch"} landed!`;
+        if (arenaState.opponentHealth === 0) {
+          renderArena();
+          endArena(true);
+          return;
+        }
+      } else {
+        arenaStatusElement.textContent = type === "ultimate" ? "Cosmic Break missed! Move closer before using your ultimate." : "Too far away. Move in to land a hit.";
+      }
+      renderArena();
+    }
+
+    function updateArena() {
+      if (!arenaState.active) return;
+      const direction = Number(arenaState.right) - Number(arenaState.left);
+      arenaState.playerX = Math.max(7, Math.min(93, arenaState.playerX + direction * 0.8));
+      const distance = arenaState.playerX - arenaState.opponentX;
+      if (Math.abs(distance) > 18) {
+        arenaState.opponentX += Math.sign(distance) * 0.28;
+      } else if (Date.now() >= arenaState.opponentAttackAt) {
+        arenaState.opponentAttackAt = Date.now() + 900;
+        arenaState.playerHealth = Math.max(0, arenaState.playerHealth - 9);
+        playerFighterElement.classList.add("is-hurt");
+        setTimeout(() => playerFighterElement.classList.remove("is-hurt"), 180);
+        arenaStatusElement.textContent = "Moon Bruiser hit you. Keep moving and strike back!";
+        if (arenaState.playerHealth === 0) {
+          renderArena();
+          endArena(false);
+          return;
+        }
+      }
+      renderArena();
+    }
+
+    document.querySelectorAll("[data-arena-move]").forEach((button) => {
+      const direction = button.dataset.arenaMove;
+      button.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        arenaState[direction] = true;
+        button.setPointerCapture(event.pointerId);
+      });
+      ["pointerup", "pointercancel", "lostpointercapture"].forEach((eventName) => {
+        button.addEventListener(eventName, () => { arenaState[direction] = false; });
+      });
+    });
+
+    document.querySelectorAll("[data-arena-action]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.dataset.arenaAction === "jump" && arenaState.active) arenaState.jumpUntil = Date.now() + 480;
+        if (["punch", "kick", "ultimate"].includes(button.dataset.arenaAction)) arenaAttack(button.dataset.arenaAction);
+        renderArena();
+      });
+    });
+
+    document.getElementById("arena-start").addEventListener("click", startArena);
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft" || event.key.toLowerCase() === "a") { arenaState.left = true; event.preventDefault(); }
+      if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") { arenaState.right = true; event.preventDefault(); }
+      if (event.code === "Space") {
+        event.preventDefault();
+        if (!event.repeat) {
+          if (arenaState.active) { arenaState.jumpUntil = Date.now() + 480; renderArena(); }
+          startSpaceCollection();
+        }
+        return;
+      }
+      if (event.repeat) return;
+      if (event.key.toLowerCase() === "j") arenaAttack("punch");
+      if (event.key.toLowerCase() === "k") arenaAttack("kick");
+      if (event.key.toLowerCase() === "l") arenaAttack("ultimate");
+    });
+    window.addEventListener("keyup", (event) => {
+      if (event.key === "ArrowLeft" || event.key.toLowerCase() === "a") arenaState.left = false;
+      if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") arenaState.right = false;
+      if (event.code === "Space") stopSpaceCollection();
+    });
+    window.addEventListener("blur", () => {
+      arenaState.left = false;
+      arenaState.right = false;
+      stopSpaceCollection();
+    });
 
     function loadState() {
       try {
@@ -399,8 +679,8 @@
       walletElement.textContent = formatNumber(state.stardust);
       perSecondElement.textContent = formatNumber(productionRate());
       tapHintElement.textContent = state.storyMode
-        ? "Story mode: follow the cosmic trail and defeat each challenger"
-        : "Tap your planet to gather stardust";
+        ? "Story mode: follow the cosmic trail. Hold Space to gather stardust."
+        : "Tap your planet or hold Space to gather stardust";
       document.querySelectorAll(".mode-option").forEach((button) => {
         const isActive = button.dataset.mode === (state.storyMode ? "story" : "classic");
         button.classList.toggle("is-active", isActive);
@@ -473,6 +753,23 @@
       if (x !== undefined && y !== undefined) showFloat(amount, x, y);
     }
 
+    function startSpaceCollection() {
+      if (spaceHeld) return;
+      spaceHeld = true;
+      const collectWhileHeld = () => {
+        if (!spaceHeld) return;
+        collect(tapPower());
+        spaceCollectTimer = window.setTimeout(collectWhileHeld, 150);
+      };
+      collectWhileHeld();
+    }
+
+    function stopSpaceCollection() {
+      spaceHeld = false;
+      window.clearTimeout(spaceCollectTimer);
+      spaceCollectTimer = null;
+    }
+
     function showFloat(amount, x, y) {
       const float = document.createElement("span");
       float.className = "float-text";
@@ -534,6 +831,7 @@
 
     bossButtonElement.addEventListener("click", fightBoss);
 
+    setInterval(updateArena, 50);
     setInterval(() => {
       const rate = productionRate();
       if (!rate) return;
@@ -544,6 +842,7 @@
     }, 1000);
 
     render();
+    renderArena();
   </script>
 </body>
 </html>
